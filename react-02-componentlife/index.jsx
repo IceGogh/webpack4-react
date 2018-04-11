@@ -26,6 +26,8 @@ class MyTitle extends React.Component {
 		}
 	}
 	componentWillMount() {
+		// willmount 时  this实例已经生成 
+		console.log('state', this.state)
 		console.log(new Date().getTime() + ' WillMount ' + new Date())
 	}
 	render() {
