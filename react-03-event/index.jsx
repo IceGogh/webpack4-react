@@ -11,7 +11,6 @@ class Hey extends React.Component {
 	}
 	clickDiv(e) {
 		let Time = ++this.state.time
-		console.log(Time)
 		this.setState({
 			time: Time
 		})
