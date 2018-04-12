@@ -68,7 +68,12 @@ class Box extends React.Component {
 	clkin(e) {
 		let ind = e.target.attributes['ind'].value
 		let arr = this.state.statusArr
-			, role = this.state.role
+		let preWord = e.target.innerHTML
+		// 已下位置 返回false
+		if(preWord === 'X' || preWord === 'O') {
+			return false
+		}
+		let role = this.state.role
 			, Xarr = this.state.XArr
 			, Oarr = this.state.OArr
 		arr[ind] = role
@@ -87,16 +92,11 @@ class Box extends React.Component {
 				XArr: Xarr
 			})
 			if (Xarr.length >= 3) {
-				if (
-					WinArr.some(function (item) {
-						console.log('item', item)
-						console.log('X', Xarr)
-						return item === Xarr
-					})
-				) {
-					console.log(13)
-				} else {
-					console.log(24)
+				for(let i = 0; i < WinArr.length; i++) {
+					const [a, b, c] = WinArr[i]
+					if(arr[a] && arr[a] === arr[b] && arr[b] === arr[c]) {
+						alert('X win!')
+					}
 				}
 			}
 		} else {
@@ -105,10 +105,16 @@ class Box extends React.Component {
 				role: 'X',
 				OArr: Oarr
 			})
+
+			if (Oarr.length >= 3) {
+				for(let i = 0; i < WinArr.length; i++) {
+					const [a, b, c] = WinArr[i]
+					if(arr[a] && arr[a] === arr[b] && arr[b] === arr[c]) {
+						alert('O win!')
+					}
+				}
+			}
 		}
-
-
-
 	}
 
 	render() {
