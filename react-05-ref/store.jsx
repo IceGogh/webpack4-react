@@ -88,3 +88,28 @@ export class StoreC extends React.Component {
 		)
 	}
 }
+
+// 不受控组件 ？？ ref
+export class NameForm extends React.Component {
+  constructor(props) {
+    super(props);
+    this.handleSubmit = this.handleSubmit.bind(this);
+  }
+
+  handleSubmit(event) {
+    alert('A name was submitted: ' + this.cc.value);
+    event.preventDefault();
+  }
+
+  render() {
+    return (
+      <form onSubmit={this.handleSubmit}>
+        <label>
+          Name:
+          <input type="text" ref={(e)=>{this.cc = e}}/>
+        </label>
+        <input type="submit" value="Submit" />
+      </form>
+    );
+  }
+}
