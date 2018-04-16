@@ -1,6 +1,5 @@
 import React from 'react'
-import ReactDOM from 'react-dom'
-import { render } from 'react-dom'
+import ReactDOM, { render } from 'react-dom'
 import {BrowserRouter, Route, Link} from 'react-router-dom'
 import './style.css'
 
@@ -8,9 +7,9 @@ const App = () => (
   <BrowserRouter basename="/">
     <div>
       <AddressBar/>
-      <Link to="/">home</Link>
-      <Link to="/about/12?name=minooo">about</Link>
-      <Link to="/contact">contact</Link>
+      <Link to="/">Home</Link>
+      <Link to="/about/12?name=minooo">About</Link>
+      <Link to="/contact">Contact</Link>
       <Link to="/other/react/router">other</Link>
       <Link to="/another/2017-04-02.html">another</Link>
       <Link to="/query/user?id=123&name=minooo">query1</Link>
@@ -76,4 +75,7 @@ const AddressBar = () => (
   )}/>
 )
 
-ReactDOM.render(<App/>, document.getElementById('hey'))
+ReactDOM.render(
+	<App/>, 
+	document.getElementById('hey')
+)

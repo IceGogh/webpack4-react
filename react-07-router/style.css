@@ -50,4 +50,5 @@ body {
 
 a {
   margin-right: 15px;
+  text-transform: capitalize;
 }
