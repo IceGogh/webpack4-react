@@ -12,8 +12,8 @@ npm run build  （部分）生产环境
  `test code `    
  `test line2`
 
- ~import React from 'react'~
- import Rea...
+ ~import React from 'react'~     
+ import Rea...    
  export default function Test(){
 	 return 111
  }
