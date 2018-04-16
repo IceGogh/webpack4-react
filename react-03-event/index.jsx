@@ -4,20 +4,18 @@ import './index.css'
 class Hey extends React.Component {
 	constructor() {
 		super()
-		this.clickDiv = this.clickDiv.bind(this)
+		// this.clickDiv = this.clickDiv.bind(this)
 		this.state = {
 			time: 0
 		}
 	}
 	clickDiv(e) {
-		let Time = ++this.state.time
-		this.setState({
-			time: Time
-		})
+		let time = ++this.state.time
+		this.setState({ time })
 	}
 	render() {
 		return (
-			<div onClick={this.clickDiv}>
+			<div onClick={this.clickDiv.bind(this)}>
 				click {this.state.time} time{ this.state.time > 1 ? 's' : ''}
 			</div>
 		)

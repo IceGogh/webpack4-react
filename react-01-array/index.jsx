@@ -84,7 +84,7 @@ class Item extends React.Component {
 				}
 				<Lists>
 					<span>
-						hellow
+						hello
 					</span>
 					<a>
 						www

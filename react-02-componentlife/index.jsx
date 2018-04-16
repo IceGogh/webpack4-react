@@ -53,7 +53,7 @@ class MyTitle extends React.Component {
 	shouldComponentUpdate() {
 		console.log(new Date().getTime() + ' shouldUpdate ' + new Date())
 		return true
-		// return false 返回false，则不会执行渲染，也会跳过render前后的钩子函数
+		// return false // 返回false，则不会执行渲染，也会跳过render前后的钩子函数
 	}
 
 	componentDidUpdate() {

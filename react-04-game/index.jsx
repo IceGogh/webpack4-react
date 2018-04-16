@@ -1,6 +1,7 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
 import './index.less'
+
 class Hey extends React.Component {
 	render() {
 		return (
@@ -43,9 +44,10 @@ class Box extends React.Component {
 		this.state = {
 			role: 'X',
 			statusArr: [],
-			stepPosition: -1,
+			stepPosition: [],
 			XArr: [],
-			OArr: []
+			OArr: [],
+			winArr:[]
 			// 初始 statusArr为空数据, 将赋值函数放到  willmount 周期中赋值
 			// statusArr: function() {
 			// 	const Arr = []
@@ -84,16 +86,18 @@ class Box extends React.Component {
 		this.initArr()
 	}
 	backStep() {
-		let Step = this.state.stepPosition
-		if(Step === -1) {
+		let stepPosition = this.state.stepPosition
+		if(stepPosition.length === 0) {
 			return false
 		}
+		let Len = stepPosition.length
 		let role = this.state.role
 		let statusArr = this.state.statusArr
-		statusArr[Step] = null
+		statusArr[stepPosition[Len-1]] = null
+		stepPosition.length = Len -1
 		this.setState({
 			statusArr,
-			stepPosition: -1,
+			stepPosition,
 			role: role === 'X' ? 'O' : 'X'
 		})
 	}
@@ -109,12 +113,13 @@ class Box extends React.Component {
 		let role = this.state.role
 			, Xarr = this.state.XArr
 			, Oarr = this.state.OArr
+			, stepPosition = this.state.stepPosition
 		arr[ind] = role
-
+		stepPosition.push(Number(ind))
 		// 更新棋盘数组
 		this.setState({
 			statusArr: arr,
-			stepPosition: ind
+			stepPosition
 		})
 
 		//  更新 当前下子方  更新双方已经下子数据
@@ -151,6 +156,9 @@ class Box extends React.Component {
 	}
 
 	render() {
+		const spanClass = {
+			'win': 'win',
+		}
 		return (
 			<div>
 				<StatusTitle curRole={this.state.role} />
@@ -160,14 +168,17 @@ class Box extends React.Component {
 							return <span
 								key={index}
 								ind={index}
-								className={(item === 'X' || item === 'O') ? ( item === 'X' ? 'Xclick' : 'Oclick') : ''}
+								className={`
+									${(item === 'X' || item === 'O') ? ( item === 'X' ? 'Xclick' : 'Oclick') : ''}  
+									${spanClass['win']}
+								`}
 								onClick={this.clkin}>{ (item === 'X' || item === 'O') ? item : ''}</span>
 						})
 					}
 				</div>
 				<button onClick={this.clr}>Reset</button>
 				<button 
-					disabled={this.state.stepPosition === -1 ? true : false}
+					disabled={this.state.stepPosition.length === 0 ? true : false}
 					onClick={this.backStep}>Back 1 step</button>
 			</div>
 		)
