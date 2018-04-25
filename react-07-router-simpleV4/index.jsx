@@ -8,7 +8,10 @@ class Heytoo extends React.Component {
 	render(){
 		return (
 			<div>
-				<header>Our React Router 4 App</header>
+				<header>
+					Our React Router 4 App
+					<Route path="/User" component={UserComponent} />
+				</header>
 				<div>
 					<Link to="/">Home</Link>
 				</div>
@@ -17,7 +20,7 @@ class Heytoo extends React.Component {
 				</div>
 				<main>
 					<Route path="/" exact component={HomeComponent} />
-					<Route path="/User" component={UserComponent} />
+					<Route path="/User"  component={UserComponent} />
 				</main>
 			</div>
 		)
@@ -27,9 +30,12 @@ class Heytoo extends React.Component {
 const HomeComponent = () => <h3>Home page</h3>
 const UserComponent = () => <h3>User page</h3>
 
-ReactDOM.render(
+const HeyWrap = () => (
 	<BrowserRouter>
 		<Heytoo/>
-	</BrowserRouter>,
+	</BrowserRouter>
+)
+ReactDOM.render(
+	<HeyWrap/>,
 	document.getElementById('hey')
 )
