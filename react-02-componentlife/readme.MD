@@ -1,5 +1,7 @@
 ## React 生命周期
+--
 #父子组件周期的理解
+--
 父组件 -> WillMount
 		子组件 -> Child WillMount
 					-> Child DidMount
