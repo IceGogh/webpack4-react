@@ -3,14 +3,10 @@ const path = require('path')
 module.exports = {
 	entry: ['./index.jsx'],
 	output: {
-		path: path.resolve(__dirname, ''),
-		filename: "bundle.js"
+		path: path.resolve(__dirname, 'dist'),
+		filename: "[name].js"
 	},
-	mode: 'development',
-	devServer: {
-		host: 'localhost',
-		port: 7704
-	},
+	mode: 'production',
 	module: {
 		rules: [
 			{
@@ -34,5 +30,11 @@ module.exports = {
 				]
 			}
 		]
-	}
+	},
+	plugins: [
+		new HtmlWebpackPlugin({
+      template: 'index.html',
+      title: 'vue-element-admin'
+    })
+	]
 }
